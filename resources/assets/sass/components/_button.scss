@@ -1,8 +1,28 @@
 .button {
-
+  background-color:   #777;
+  border:             2px solid #777;
+  color:              #000;
+  font-weight:        400;
+  padding:            $gutter/2;
+  text-transform:     uppercase;
+  transition: 100ms ease-in-out;
+  -webkit-appearance: none;
 }
 
 .button--block {
   display: block;
-  width: 100%;
+  width:   100%;
+}
+
+.button--grey-solid {
+  background-color: #191818;
+  border-color:     #191818;
+  color:            #fff;
+
+  &:focus,
+  &:hover {
+    border-color:     #191818;
+    background-color: transparent;
+    color:            #191818;
+  }
 }
