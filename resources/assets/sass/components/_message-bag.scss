@@ -1,0 +1,17 @@
+.message-bag {
+  border-width: 1px;
+  border-style: solid;
+  list-style:   none;
+  font-size: 12px;
+  padding: 0;
+}
+
+.message-bag--error {
+  background-color: lighten(red, 45%);
+  border-color:     darken(red, 10%);
+}
+
+.message-bag li {
+  border-top:     1px solid rgba(0, 0, 0, 0.1);
+  padding: $gutter / 2;
+}
