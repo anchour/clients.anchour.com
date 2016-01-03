@@ -22,7 +22,12 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/admin/mailing-list', [
-        'as' => 'admin.mailing',
-        'uses' => 'Admin\MailingListController@index'
+        'as' => 'admin.mailing-list.create',
+        'uses' => 'Admin\MailingListController@create'
+    ]);
+
+    Route::post('/admin/mailing-list', [
+        'as' => 'admin.mailing-list.store',
+        'uses' => 'Admin\MailingLIstController@store'
     ]);
 });

@@ -9,8 +9,13 @@ use App\Http\Controllers\Controller;
 
 class MailingListController extends Controller
 {
-    public function index()
+    public function create()
     {
-        return view('welcome');
+        return view('admin.mailing-list.create');
+    }
+
+    public function store()
+    {
+        // logic goes here.
     }
 }
