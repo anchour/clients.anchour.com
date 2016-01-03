@@ -41,13 +41,6 @@
         padding-left:  $gutter / 4;
         padding-right: $gutter / 4;
       }
-
-      // negative margins are doubled from the padding left/right to account for
-      // the padding on both the .row and the .col ancestors.
-      > .col .row {
-        margin-left:  -$gutter / 2;
-        margin-right: -$gutter / 2;
-      }
     }
 
     .row--#{$grid-prefix}wide-gutter {
@@ -57,13 +50,6 @@
       > .col {
         padding-left:  $gutter-wide / 4;
         padding-right: $gutter-wide / 4;
-      }
-
-      // negative margins are doubled from the padding left/right to account for
-      // the padding on both the .row and the .col ancestors.
-      > .col .row {
-        margin-left:  -$gutter-wide / 2;
-        margin-right: -$gutter-wide / 2;
       }
     }
 
