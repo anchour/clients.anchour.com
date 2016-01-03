@@ -2,8 +2,12 @@
 
 }
 .login-form__forgot {
-  display:    block;
   font-size:  12px;
-  margin:     ($gutter / 2) auto;
-  text-align: center;
+
+  @include respond-to(sm, max) {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
 }
