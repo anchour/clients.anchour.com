@@ -1,23 +1,24 @@
 .site-header {
-  left: 0;
-  padding: $gutter / 2;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  overflow: hidden;
+  background: #efefef;
+  left:       0;
+  overflow:   hidden;
+  padding:    $gutter / 2;
+  position:   absolute;
+  top:        0;
+  width:      100%;
 }
 
 .site-header__logo {
-  float: left;
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0;
+  float:          left;
+  font-size:      18px;
+  font-weight:    bold;
+  margin:         0;
   text-transform: uppercase;
 }
 
 .nav--header {
-  float: right;
-  font-size: 12px;
-  font-weight: bold;
+  float:          right;
+  font-size:      12px;
+  font-weight:    bold;
   text-transform: uppercase;
 }

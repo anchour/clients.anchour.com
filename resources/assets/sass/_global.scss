@@ -19,3 +19,8 @@ a {
   clip:     rect(0, 0, 0, 0);
   border:   0;
 }
+
+body {
+  // Offset the .site-header absolute positioning
+  padding-top: 80px;
+}
