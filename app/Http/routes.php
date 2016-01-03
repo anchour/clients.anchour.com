@@ -11,21 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/', function() {
+        return redirect('auth/login');
+    });
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
+    // Auth routes.
+    Route::group(['prefix' => 'auth'], function() {
+        Route::auth();
+    });
 
-Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/admin/mailing-list', [
+        'as' => 'admin.mailing',
+        'uses' => 'Admin\MailingListController@index'
+    ]);
 });

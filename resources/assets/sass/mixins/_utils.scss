@@ -1,0 +1,23 @@
+// Fetch items from multi-level maps.
+//
+// See https://css-tricks.com/snippets/sass/deep-getset-maps/
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    @if $key {
+      $map: map-get($map, $key);
+    }
+  }
+  @return $map;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}

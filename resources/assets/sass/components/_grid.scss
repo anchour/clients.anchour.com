@@ -1,0 +1,123 @@
+// Flexbox grid system.
+.row {
+  position:       relative;
+  display:        flex;
+  flex-direction: row;
+  flex-wrap:      wrap;
+}
+
+.col {
+  flex:     0 1 100%;
+  position: relative;
+}
+
+.container {
+  margin-left:  auto;
+  margin-right: auto;
+  width:        100%;
+}
+
+.container--full-width {
+  max-width: none !important;
+}
+
+@each $grid, $grid-config in $grid-sizes {
+
+  $grid-prefix: map-get($grid-config, 'prefix');
+  $media: map-get($grid-config, 'media');
+  $min: map-get($grid-config, 'min');
+  $max: map-get($grid-config, 'max');
+
+  @include respond-to($media) {
+    .container--#{$media} {
+      max-width: $min;
+    }
+
+    .row--#{$grid-prefix}gutter {
+      padding-left:  $gutter / 4;
+      padding-right: $gutter / 4;
+
+      > .col {
+        padding-left:  $gutter / 4;
+        padding-right: $gutter / 4;
+      }
+
+      // negative margins are doubled from the padding left/right to account for
+      // the padding on both the .row and the .col ancestors.
+      > .col .row {
+        margin-left:  -$gutter / 2;
+        margin-right: -$gutter / 2;
+      }
+    }
+
+    .row--#{$grid-prefix}wide-gutter {
+      padding-left:  $gutter-wide / 4;
+      padding-right: $gutter-wide / 4;
+
+      > .col {
+        padding-left:  $gutter-wide / 4;
+        padding-right: $gutter-wide / 4;
+      }
+
+      // negative margins are doubled from the padding left/right to account for
+      // the padding on both the .row and the .col ancestors.
+      > .col .row {
+        margin-left:  -$gutter-wide / 2;
+        margin-right: -$gutter-wide / 2;
+      }
+    }
+
+    // Setting container widths
+    //
+    // Each size has a max width of the container minus the $container-margin,
+    // so they do have a max width when the screen hits certain sizes.
+    .row--#{$grid-prefix}hc {
+      justify-content: center;
+    }
+
+    .row--#{$grid-prefix}vc {
+      align-items: center;
+    }
+
+    // Full height row
+    .row--#{$grid-prefix}fh {
+      height: 100%;
+    }
+
+    // Viewport full height row
+    .row--#{$grid-prefix}vh {
+      min-height: 100vh;
+    }
+
+    .row.row--#{$grid-prefix}reverse {
+      flex-direction: row-reverse;
+    }
+
+    @for $i from 1 through $grid-cols {
+      .col.col-#{$grid-prefix}#{$i} {
+        flex: 0 1 percentage($i / $grid-cols);
+      }
+    }
+
+    // allows us to break of out of the standard grid
+    // loosely defined columns (progress bar, step bar, etc)
+    @for $i from 2 through $grid-cols {
+      .col.#{$grid-prefix}loose-1-of-#{$i} {
+        flex: 0 1 percentage(1 / $i);
+      }
+    }
+
+    .col.col--no-gutter {
+      padding-left:  0 !important;
+      padding-right: 0 !important;
+    }
+
+    .col.col-#{$grid-prefix}auto {
+      flex: 0 0 auto;
+    }
+
+    .col.col-#{$grid-prefix}fill {
+      flex: 1 1 0;
+    }
+  }
+}

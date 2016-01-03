@@ -1,0 +1,76 @@
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+//
+// Flexbox Grid
+//
+
+// Sizes.
+$grid-phone:   320px  !default;
+$grid-phablet: 500px  !default;
+$grid-sm:      768px  !default;
+$grid-md:      992px  !default;
+$grid-lg:      1100px !default;
+$grid-xl:      1440px !default;
+
+$grid-phone-max:   ($grid-phablet - 1px) !default;
+$grid-phablet-max: ($grid-sm - 1px) !default;
+$grid-sm-max:      ($grid-md - 1px) !default;
+$grid-md-max:      ($grid-lg - 1px) !default;
+$grid-lg-max:      ($grid-xl - 1px) !default;
+
+$grid-float-breakpoint: $grid-sm;
+
+$gutter: 40px;
+$gutter-wide: 80px;
+
+// Mapping between grid identifiers and the media queries they map to.
+// If you want to introduce a grid, just update the definition here.
+// Ordering is important here, latter overrides the former.
+$grid-sizes: (
+        "all": (
+                media: "all",
+                prefix: "",
+                min: null,
+                max: null
+        ),
+        phone: (
+                media: "all",
+                prefix: "",
+                min: null,
+                max: $grid-phone-max
+        ),
+        phablet: (
+                media: "all",
+                prefix: "phablet-",
+                min: $grid-phablet,
+                max: $grid-phablet-max
+        ),
+        sm: (
+                media: "sm",
+                prefix: "sm-",
+                min: $grid-sm,
+                max: $grid-sm-max
+        ),
+        md: (
+                media: "md",
+                prefix: "md-",
+                min: $grid-md,
+                max: $grid-md-max
+        ),
+        lg: (
+                media: "lg",
+                prefix: "lg-",
+                min: $grid-lg,
+                max: $grid-lg-max
+        ),
+        xl: (
+                media: "xl",
+                prefix: "xl-",
+                min: $grid-xl,
+                max: null
+        )
+) !default;
+
+$grid-cols: 12 !default;

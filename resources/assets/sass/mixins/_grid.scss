@@ -1,0 +1,52 @@
+// Set up the media queries for the flexbox grid.
+@mixin respond-to($media, $type: 'min', $maxMedia: null, $pre: false) {
+  // Get the default min and max values.
+  $min: map-deep-get($grid-sizes, $media, 'min');
+  $max: map-deep-get($grid-sizes, $media, 'max');
+  // Re-assign the gutter for the media query, here, so the gutters used within the
+  // `respond-to` mixin correspond to the correct size.
+  $gutter: map-deep-get($grid-sizes, $media, 'gutter');
+
+  // todo this doesn't really work out that well. Need a better way to get the "pre" value.
+  @if $pre {
+    $max: $min - 1;
+  }
+
+  // If we're specifying a maximum for a range, get the "maxMedia" instead of using the regular $max.
+  @if $type == 'between' and $maxMedia {
+    $max: map-deep-get($grid-sizes, $maxMedia, 'max');
+  }
+
+  @if $type == 'min' and $min {
+    // min-width range.
+    @media all and (min-width: $min) {
+      @content;
+    }
+  } @else if $type == 'max' {
+    // max-width range.
+    @media all and (max-width: $max) {
+      @content;
+    }
+  } @else if ($type == 'between' and $max) {
+    // We're in a range and we have proper values selected.
+    @media all and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+/// Media query for desktop-only content/styles.
+@mixin desktop {
+  @include respond-to($mobile-breakpoint) {
+    @content;
+  }
+}
+
+/// Media query for mobile-only content/styles.
+@mixin mobile {
+  @include respond-to($mobile-breakpoint, 'max', null, true) {
+    @content;
+  }
+}
