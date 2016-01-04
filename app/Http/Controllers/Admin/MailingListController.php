@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\AddsMailingListEntry;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,7 +15,7 @@ class MailingListController extends Controller
         return view('admin.mailing-list.create');
     }
 
-    public function store()
+    public function store(AddsMailingListEntry $request)
     {
         // logic goes here.
     }

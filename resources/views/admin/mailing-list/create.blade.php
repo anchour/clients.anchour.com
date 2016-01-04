@@ -13,7 +13,7 @@
             <div class="col">
                 <label for="mailing-list-name" class="sr-only form__label">Client Name</label>
                 <input type="text"
-                       name="mailing-list-name"
+                       name="name"
                        id="mailing-list-name"
                        class="form__input"
                        placeholder="Client Name">
@@ -23,7 +23,7 @@
             <div class="col">
                 <label for="mailing-list-email" class="sr-only form__label">Client Email Address</label>
                 <input type="email"
-                       name="mailing-list-email"
+                       name="email"
                        id="mailing-list-email"
                        class="form__input form__input--email"
                        placeholder="Client Email">
