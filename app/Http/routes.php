@@ -21,13 +21,24 @@ Route::group(['middleware' => 'web'], function () {
         Route::auth();
     });
 
+    Route::get('/admin', [
+        'as' => 'admin.index',
+        'uses' => 'Admin\DashboardController@index'
+    ]);
+
+
     Route::get('/admin/mailing-list', [
-        'as' => 'admin.mailing-list.create',
-        'uses' => 'Admin\MailingListController@create'
+        'as' => 'admin.mailing-list.index',
+        'uses' => 'Admin\MailingListController@getIndex'
+    ]);
+
+    Route::get('admin/mailing-list/new', [
+        'as' => 'admin.mailing-list.new.get',
+        'uses' => 'Admin\MailingListController@getNew'
     ]);
 
     Route::post('/admin/mailing-list', [
-        'as' => 'admin.mailing-list.store',
-        'uses' => 'Admin\MailingLIstController@store'
+        'as' => 'admin.mailing-list.new.post',
+        'uses' => 'Admin\MailingLIstController@postNew'
     ]);
 });

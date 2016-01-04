@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form class="form mailing-list-form" action="{{ route('admin.mailing-list.store') }}">
+    <form class="form mailing-list-form" action="{{ route('admin.mailing-list.new.post') }}">
         <div class="form__row row">
             <div class="col">
                 <h2 class="form__header">
