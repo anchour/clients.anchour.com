@@ -3,16 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AddsMailingListEntry;
+use App\Repositories\MailingListRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use Redirect;
 
 class MailingListController extends Controller {
-    public function __construct()
+    /**
+     * @var MailingListRepository
+     */
+    private $repository;
+
+    public function __construct(MailingListRepository $repository)
     {
         $this->middleware('auth');
+
+        $this->repository = $repository;
     }
 
     /**
@@ -33,9 +41,8 @@ class MailingListController extends Controller {
         $name  = $request->get('name');
         $email = $request->get('email');
 
-        DB::insert(
-            'insert into mailing_list (name, email) values(?, ?)',
-            [$name, $email]
-        );
+        $this->repository->insert($name, $email);
+
+        return Redirect::route('admin.mailing-list.index');
     }
 }
