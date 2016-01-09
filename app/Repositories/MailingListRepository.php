@@ -3,6 +3,20 @@
 use DB;
 
 class MailingListRepository {
+
+    /**
+     * @var DB
+     */
+    protected $db;
+
+    /**
+     * MailingListRepository constructor.
+     */
+    public function __construct()
+    {
+        $this->db = app()->make('db');
+    }
+
     public function insert($name, $email)
     {
         DB::insert(
@@ -17,7 +31,7 @@ class MailingListRepository {
      */
     public function get($email)
     {
-        $data = app()->make('db')
+        $data = $this->db
             ->table('mailing_list')
             ->where('email', $email)
             ->first();
