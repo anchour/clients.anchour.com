@@ -4,6 +4,7 @@
 <div class="container container--xl">
     <div class="row row--wide-gutter">
         <div class="col">
+            @include('layouts.partials.errors')
             @yield('content')
         </div>
     </div>
