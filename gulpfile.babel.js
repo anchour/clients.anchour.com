@@ -1,4 +1,4 @@
-var elixir = require('laravel-elixir');
+import elixir from 'laravel-elixir';
 
 // Include all paths for the plugin
 elixir.config.css.sass.pluginOptions = {
@@ -9,6 +9,7 @@ elixir.config.css.sass.pluginOptions = {
 
 elixir(function(mix) {
     mix.sass('main.scss')
+        .phpUnit()
         .browserSync({
             proxy: 'clients.dev'
         });
