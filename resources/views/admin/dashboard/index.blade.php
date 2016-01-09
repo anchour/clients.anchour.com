@@ -7,7 +7,7 @@
 
             <ul>
                 <li>
-                    <a href="{{ route('admin.mailing-list.create') }}">Add new</a>
+                    <a href="{{ route('admin.mailing-list.new.get') }}">Add new</a>
                 </li>
             </ul>
         </li>
