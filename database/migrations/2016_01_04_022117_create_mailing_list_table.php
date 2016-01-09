@@ -15,7 +15,7 @@ class CreateMailingListTable extends Migration
         Schema::create('mailing_list', function(Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamps();
         });
     }
