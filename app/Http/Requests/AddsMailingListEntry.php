@@ -11,7 +11,7 @@ class AddsMailingListEntry extends Request {
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class AddsMailingListEntry extends Request {
     {
         return [
             'name'  => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email|unique:mailing_list,email'
         ];
     }
 }
