@@ -26,7 +26,7 @@ class MailingListRepositoryTest extends TestCase {
     /** @test */
     public function it_inserts_a_row_to_the_database()
     {
-        $this->repository->insert($this->mailingListName, $this->mailingListEmail);
+        $this->insertRowIntoTable();
 
         $this->seeInDatabase('mailing_list', [
             'name'  => $this->mailingListName,
@@ -37,16 +37,35 @@ class MailingListRepositoryTest extends TestCase {
     /** @test */
     public function it_returns_the_row_by_email()
     {
-        $this->repository->insert($this->mailingListName, $this->mailingListEmail);
+        // Populate the database first.
+        $this->insertRowIntoTable();
 
+        // Retrieve the database.
         $data = $this->repository->get($this->mailingListEmail);
 
-        $this->assertEquals($this->mailingListName, $data->name);
-        $this->assertEquals($this->mailingListEmail, $data->email);
+        // Check that the data matches the class data.
+        $this->hasRowInDatabase($data);
     }
 
-    /** @test */
-    public function test_emails_in_database_are_unique()
+    /**
+     * Add a row into the database.
+     */
+    private function insertRowIntoTable()
     {
+        $this->repository->insert(
+            $this->mailingListName,
+            $this->mailingListEmail
+        );
+    }
+
+    /**
+     * Check that the database has the name and email.
+     *
+     * @param $data
+     */
+    private function hasRowInDatabase($data)
+    {
+        $this->assertEquals($this->mailingListName, $data->name);
+        $this->assertEquals($this->mailingListEmail, $data->email);
     }
 }
