@@ -11,12 +11,19 @@ class MailingListRepository {
         );
     }
 
+    /**
+     * @param $email
+     * @return bool|mixed|static
+     */
     public function get($email)
     {
-        $data = DB::table('mailing_list')->where('email', $email)->first();
+        $data = app()->make('db')
+            ->table('mailing_list')
+            ->where('email', $email)
+            ->first();
 
         if (! $data) {
-            return;
+            return false;
         }
 
         return $data;
