@@ -1,7 +1,11 @@
 <?php
 
 use App\Repositories\MailingListRepository;
+
+use Barryvdh\LaravelIdeHelper\Generator;
+use Faker\Provider\Internet;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Faker\Generator as Faker;
 
 class MailingListRepositoryTest extends TestCase {
 
@@ -13,6 +17,10 @@ class MailingListRepositoryTest extends TestCase {
     protected $repository;
     protected $mailingListEmail;
     protected $mailingListName;
+    /**
+     * @var Generator
+     */
+    private $faker;
 
     public function setUp()
     {
@@ -47,14 +55,36 @@ class MailingListRepositoryTest extends TestCase {
         $this->hasRowInDatabase($data);
     }
 
+    /** @test */
+    public function it_returns_all_rows_from_database()
+    {
+        $this->insertRowIntoTable('name1', 'email1');
+        $this->insertRowIntoTable('name2', 'email2');
+        $this->insertRowIntoTable('name3', 'email3');
+
+        $data = $this->repository->all();
+
+        $this->assertCount(3, $data);
+    }
+
     /**
      * Add a row into the database.
+     * @param string $name
+     * @param string $email
      */
-    private function insertRowIntoTable()
+    private function insertRowIntoTable($name = '', $email = '')
     {
+        if (! $name) {
+            $name = $this->mailingListName;
+        }
+
+        if (! $email) {
+            $email = $this->mailingListEmail;
+        }
+
         $this->repository->insert(
-            $this->mailingListName,
-            $this->mailingListEmail
+            $name,
+            $email
         );
     }
 

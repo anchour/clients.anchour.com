@@ -10,19 +10,20 @@ class MailingListRepository {
     protected $db;
 
     /**
-     * MailingListRepository constructor.
+     * Insert the row into the database.
+     *
+     * @param $name
+     * @param $email
+     * @return bool
      */
-    public function __construct()
-    {
-        $this->db = app()->make('db');
-    }
-
     public function insert($name, $email)
     {
-        DB::insert(
+        $data = app()->make('db')->insert(
             'insert into mailing_list (name, email) values(?, ?)',
             [$name, $email]
         );
+
+        return $data;
     }
 
     /**
@@ -31,10 +32,26 @@ class MailingListRepository {
      */
     public function get($email)
     {
-        $data = $this->db
+        $data = app()->make('db')
             ->table('mailing_list')
             ->where('email', $email)
             ->first();
+
+        if (! $data) {
+            return false;
+        }
+
+        return $data;
+    }
+
+    /**
+     * Get all the entries from the mailing list table.
+     *
+     * @return array|bool
+     */
+    public function all()
+    {
+        $data = app()->make('db')->table('mailing_list')->get();
 
         if (! $data) {
             return false;
