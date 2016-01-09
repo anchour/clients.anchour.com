@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <form class="form mailing-list-form" action="{{ route('admin.mailing-list.new.post') }}">
+    <form class="form mailing-list-form" action="{{ route('admin.mailing-list.new.post') }}" method="POST">
+        {{ csrf_field() }}
+
         <div class="form__row row">
             <div class="col">
                 <h2 class="form__header">
@@ -33,7 +35,7 @@
         <div class="form__row row">
             <div class="col">
                 <button class="button button--block button--grey-solid form__submit">
-                    Submit
+                    Add
                 </button>
             </div>
         </div>
