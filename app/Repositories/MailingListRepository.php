@@ -57,6 +57,6 @@ class MailingListRepository {
             return false;
         }
 
-        return $data;
+        return collect($data);
     }
 }

@@ -2,25 +2,29 @@
 
 use App\Repositories\MailingListRepository;
 
-use Barryvdh\LaravelIdeHelper\Generator;
-use Faker\Provider\Internet;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Faker\Generator as Faker;
 
 class MailingListRepositoryTest extends TestCase {
 
+    /**
+     * @var DatabaseMigrations
+     */
     use DatabaseMigrations;
 
     /**
      * @var MailingListRepository
      */
     protected $repository;
-    protected $mailingListEmail;
-    protected $mailingListName;
+
     /**
-     * @var Generator
+     * @var string
      */
-    private $faker;
+    protected $mailingListEmail;
+
+    /**
+     * @var string
+     */
+    protected $mailingListName;
 
     public function setUp()
     {
@@ -64,7 +68,8 @@ class MailingListRepositoryTest extends TestCase {
 
         $data = $this->repository->all();
 
-        $this->assertCount(3, $data);
+        $this->assertTrue($data instanceof \Illuminate\Support\Collection);
+        $this->assertTrue($data->count() === 3);
     }
 
     /**
