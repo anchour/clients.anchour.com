@@ -53,10 +53,6 @@ class MailingListRepository {
     {
         $data = app()->make('db')->table('mailing_list')->get();
 
-        if (! $data) {
-            return false;
-        }
-
         return collect($data);
     }
 }

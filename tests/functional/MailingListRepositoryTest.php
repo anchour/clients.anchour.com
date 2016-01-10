@@ -3,6 +3,7 @@
 use App\Repositories\MailingListRepository;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Collection;
 
 class MailingListRepositoryTest extends TestCase {
 
@@ -66,10 +67,27 @@ class MailingListRepositoryTest extends TestCase {
         $this->insertRowIntoTable('name2', 'email2');
         $this->insertRowIntoTable('name3', 'email3');
 
+        /**
+         * @var Collection
+         */
         $data = $this->repository->all();
 
         $this->assertTrue($data instanceof \Illuminate\Support\Collection);
         $this->assertTrue($data->count() === 3);
+    }
+
+    /**
+     * @test
+     */
+    public function it_returns_an_empty_collection_when_no_rows_in_database()
+    {
+        /**
+         * @var Collection
+         */
+        $data = $this->repository->all();
+
+        $this->assertTrue($data instanceof \Illuminate\Support\Collection);
+        $this->assertTrue($data->count() === 0);
     }
 
     /**
