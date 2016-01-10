@@ -5,6 +5,12 @@ namespace App\Http\Requests;
 class AddsMailingListEntry extends Request {
 
     /**
+     * Redirect back to the 'new' page.
+     * @var string
+     */
+    protected $redirect = '/admin/mailing-list/new';
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
