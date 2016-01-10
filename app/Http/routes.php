@@ -11,6 +11,10 @@
 |
 */
 
+Route::group(['prefix' => 'api'], function () {
+    Route::get('mailing-list', 'Api\MailingListController@index');
+});
+
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', function() {
         return redirect('auth/login');
