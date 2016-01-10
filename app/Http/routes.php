@@ -16,33 +16,32 @@ Route::group(['prefix' => 'api'], function () {
 });
 
 Route::group(['middleware' => 'web'], function () {
-    Route::get('/', function() {
+    Route::get('/', function () {
         return redirect('auth/login');
     });
 
     // Auth routes.
-    Route::group(['prefix' => 'auth'], function() {
+    Route::group(['prefix' => 'auth'], function () {
         Route::auth();
     });
 
     Route::get('/admin', [
-        'as' => 'admin.index',
+        'as'   => 'admin.index',
         'uses' => 'Admin\DashboardController@index'
     ]);
 
-
     Route::get('/admin/mailing-list', [
-        'as' => 'admin.mailing-list.index',
+        'as'   => 'admin.mailing-list.index',
         'uses' => 'Admin\MailingListController@getIndex'
     ]);
 
     Route::get('admin/mailing-list/new', [
-        'as' => 'admin.mailing-list.new.get',
+        'as'   => 'admin.mailing-list.new.get',
         'uses' => 'Admin\MailingListController@getNew'
     ]);
 
     Route::post('/admin/mailing-list', [
-        'as' => 'admin.mailing-list.new.post',
+        'as'   => 'admin.mailing-list.new.post',
         'uses' => 'Admin\MailingLIstController@postNew'
     ]);
 });
