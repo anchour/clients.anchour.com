@@ -9,11 +9,17 @@
 }
 
 .site-header__logo {
+  display: block;
   float:          left;
   font-size:      18px;
   font-weight:    bold;
   margin:         0;
   text-transform: uppercase;
+
+  img {
+    display: block;
+    height: 40px;
+  }
 }
 
 .nav--header {
