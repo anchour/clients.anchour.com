@@ -2,8 +2,17 @@
 }
 
 .form__input {
-  display: block;
-  width:   100%;
+  border:        1px solid #ececec;
+  border-radius: $border-radius-base;
+  display:       block;
+  font-size:     14px;
+  line-height:   1.2;
+  padding:       10px 15px;
+  width:         100%;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .form__row {
@@ -12,4 +21,8 @@
 }
 
 .form__button {
+}
+
+.form__label {
+  font-size: 14px;
 }
