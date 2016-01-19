@@ -37,7 +37,7 @@
 
                     <div class="form__row row row--reverse row--vc">
                         <div class="col col-md-6">
-                            <button type="submit" class="form__button button button--block">
+                            <button type="submit" class="form__button button button--block button--grey-solid">
                                 <i class="fa fa-btn fa-sign-in"></i>Login
                             </button>
 
