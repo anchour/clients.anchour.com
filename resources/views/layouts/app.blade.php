@@ -2,7 +2,6 @@
 @include('layouts.partials.header')
 
 <div id="app">
-    @include('layouts.partials.errors')
     @yield('content')
 </div>
 
