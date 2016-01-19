@@ -1,12 +1,25 @@
 .button {
   background-color:   #777;
   border:             2px solid #777;
+  border-radius:      $button-border-radius-base;
   color:              #000;
   font-weight:        400;
-  padding:            $gutter/2;
+  line-height:        1.2;
+  padding:            10px 15px;
   text-transform:     uppercase;
-  transition: 100ms ease-in-out;
+  transition:         100ms ease-in-out;
   -webkit-appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $brand-primary;
+    border-color: $brand-primary;
+    color: #fff;
+  }
 }
 
 .button--block {
@@ -18,11 +31,4 @@
   background-color: #191818;
   border-color:     #191818;
   color:            #fff;
-
-  &:focus,
-  &:hover {
-    border-color:     #191818;
-    background-color: transparent;
-    color:            #191818;
-  }
 }
