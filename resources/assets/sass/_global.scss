@@ -1,5 +1,6 @@
 body {
   font-family: $font-family-base;
+  font-size: $font-size-base;
 }
 
 * {
@@ -23,9 +24,4 @@ a {
   overflow: hidden;
   clip:     rect(0, 0, 0, 0);
   border:   0;
-}
-
-body {
-  // Offset the .site-header absolute positioning
-  padding-top: 80px;
 }
