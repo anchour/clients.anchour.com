@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 Route::group(['prefix' => 'api'], function () {
     Route::get('mailing-list', 'Api\MailingListController@index');
 });
@@ -19,6 +8,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
         return redirect('auth/login');
     });
+
+    /*
+     * Customer routes. Add new ones (client-side), etc. No need for update/delete.
+     */
+    Route::get('/customer/new', ['uses' => 'CustomerController@create']);
+
+    Route::post('/customer/new', ['uses' => 'CustomerController@store']);
 
     // Auth routes.
     Route::group(['prefix' => 'auth'], function () {
