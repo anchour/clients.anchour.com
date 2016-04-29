@@ -13,6 +13,7 @@ Route::group(['middleware' => 'web'], function () {
      * Customer routes. Add new ones (client-side), etc. No need for update/delete.
      */
     Route::get('/customer/new', ['uses' => 'CustomerController@create']);
+    Route::get('/customer/details', ['uses' => 'CustomerController@show']);
 
     Route::post('/customer/new', ['uses' => 'CustomerController@store']);
 

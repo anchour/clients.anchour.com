@@ -15,8 +15,12 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        var_dump($request->all());
-
-        die;
+        return redirect('/customer/details');
     }
+
+    public function show()
+    {
+        return view('customer.details');
+    }
+
 }

@@ -7,7 +7,7 @@
 
         <form id="new-customer-form" method="post" class="form" action="{{ action('CustomerController@store') }}">
             {{ csrf_field() }}
-            <input id="user-stripe-token" type="hidden" name="user_token" value="">
+            <input id="user-stripe-token" type="hidden" name="_token" value="">
 
             <div class="form__row">
                 <label for="cc-name">
